@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+//Часть 1
+
+int main()
+{ 
+    int A;
+    int B;
+    int C = 0;
+    FILE *new_file;
+    printf ("Введите A и B при условии B>A:");
+    scanf("%d %d", &A, &B);
+    printf ("A: %d\nB: %d\n",A,B);
+    new_file = fopen("output", "w");
+    while (A<B+1)
+    {
+        fprintf(new_file,"%d\n",A*3);
+        A = A + 1;
+        C = C + 1;
+    }
+    fclose(new_file);
+    
+//Часть 2
+
+    int n = 1;
+    new_file = fopen("output", "r");
+    printf ("Пронуменрованные значения в файле: \n");
+    while (n <= C)
+    {
+        fscanf(new_file, "%d", &A);
+        printf("№%d - %d\n",n,A);
+        n = n + 1;
+    }
+    fclose(new_file);
+}
