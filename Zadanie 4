@@ -23,18 +23,19 @@ int main()
     cout<< "Answer is: " << numbers[input]<<"\n";
         
 // Часть 2
-    string Signs;
-    string *Mark;
-    Mark = &Signs;
+    char Signs[128];
+    char *Mark;
+    Mark = Signs;
     cout << "Enter text: \n";
     cin >> Signs;
-    for(int z =0; z<Signs.size(); z++)
+    int Length = strlen(Signs);
+    int number;
+    cout<<"\n"<<"Shifted text: ";
+    for(int z =0; z<=Length; z++)
         {
-        Signs[z]++;
-        }       
-    Mark+=1;
-    cout<<"\n"<<"Shifted text: " << Signs;
-    
-    
+            number = (int)*(Mark+z);
+        number++;
+        cout<< (char)number;
+        }   
     return 0;
 }
