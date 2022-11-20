@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void SquaredSum(){
+    float a,b;
+    cout<<"Введите a и b:" <<"\n";
+    cin >> a >> b;
+    float c = (a+b)*(a+b);
+    cout<< "Квадрат суммы a и b = " << c << "\n";
+}
+
+int Numbers[10] = {6, 63, 965, 1, 9, 111, 54, 5, 90, 2};
+
+void Sort(int Numbers[10]);
+
+int main()
+{
+    SquaredSum();
+    Sort(Numbers);
+    return 0;
+}
+
+void Sort(int Numbers[10]){
+    for (int i = 0; i<10; i++){
+        for (int j = 0; j<10-i; j++){
+            if (Numbers[j]<Numbers[j+1]){
+                int Z = Numbers[j];
+                Numbers[j] = Numbers[j+1];
+                Numbers[j+1] = Z;
+            }
+        }
+    }
+    cout<< "Отсортированный массив: "<<"\n";
+    for (int j = 0; j<10; j++){
+    cout<< Numbers[j]<<", ";
+    }
+}
