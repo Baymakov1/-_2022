@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+class Bucket{
+    public:
+    int volume;
+    int used;
+    int add;
+
+    Bucket(int volumeF, int usedF){
+        volume = volumeF;
+        used = usedF;
+    }
+
+    int fill(int add){
+        if (add + used <= volume)
+        used += add;
+        else
+        return used += add - volume;
+        return used;
+        }
+
+    int flush(){
+    used = 0;
+    return used;
+    }
+
+};
+
+int main()
+{
+    Bucket test01 = Bucket(5, 2);
+
+cout << "Объём ведра " << test01.volume << "л, ведро заполнено на " << test01.used << " л" << "\n";
+cout << "Заполняем ведро на 3 литра, теперь в нём " << test01.fill(3) << " л" << "\n";
+cout << "Опусташаем ведро, теперь в нём "<< test01.flush() << " л"<< "\n";
+cout << "Заполняем ведро на 8 литров, остаток воды, не влезшей в ведро " << test01.fill(8) << " л" << std::endl;
+    return 0;
+}
