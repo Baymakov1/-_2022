@@ -29,13 +29,10 @@ int main()
     cout << "Enter text: \n";
     cin >> Signs;
     int Length = strlen(Signs);
-    int number;
     cout<<"\n"<<"Shifted text: ";
     for(int z =0; z<=Length; z++)
         {
-            number = (int)*(Mark+z);
-        number++;
-        cout<< (char)number;
-        }   
+        cout<< char(*(Mark+z)+1);
+        }       
     return 0;
 }
