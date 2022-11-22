@@ -14,27 +14,35 @@ class Bucket{
     }
 
     int fill(int add){
-        if (add + used <= volume)
-        used += add;
-        else
-        return used += add - volume;
-        return used;
+        int overfill = used + add - volume;
+        if (overfill > 0){
+            used = volume;
         }
+        else{
+            used = used + add;
+            overfill = 0;
+        }
+        return overfill;
+    }
 
     int flush(){
     used = 0;
     return used;
     }
 
+    
 };
 
 int main()
 {
-    Bucket test01 = Bucket(5, 2);
+    Bucket test_01(12, 3);
+    cout << "1) " << test_01.volume << ", " << test_01.used << "\n"; // 12, 3
+    int rest = test_01.fill(14);
+    cout << "2) " << test_01.used << ", " << rest << "\n";  // 12, 5
+    
+    test_01.flush();
+    rest = test_01.fill(8);
+    cout << "3) " << test_01.used << ", " << rest << "\n";   // 8, 0
 
-cout << "Объём ведра " << test01.volume << "л, ведро заполнено на " << test01.used << " л" << "\n";
-cout << "Заполняем ведро на 3 литра, теперь в нём " << test01.fill(3) << " л" << "\n";
-cout << "Опусташаем ведро, теперь в нём "<< test01.flush() << " л"<< "\n";
-cout << "Заполняем ведро на 8 литров, остаток воды, не влезшей в ведро " << test01.fill(8) << " л" << std::endl;
     return 0;
 }
